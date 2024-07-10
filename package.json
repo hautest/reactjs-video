@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "tsup",
     "lint": "eslint **/*.{ts,tsx}"
   },
   "keywords": [],
