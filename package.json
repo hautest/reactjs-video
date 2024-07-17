@@ -4,12 +4,17 @@
   "description": "",
   "scripts": {
     "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "eslint **/*.{ts,tsx}"
   },
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "require": {
         "types": "./dist/index.d.ts",
@@ -51,5 +56,9 @@
     "typescript": "^5.4.3",
     "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.12"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
