@@ -9,4 +9,5 @@ export interface ReactVideoState {
   setProgress: Dispatch<SetStateAction<number>>;
   speed: number;
   setSpeed: Dispatch<SetStateAction<number>>;
+  src: string;
 }
