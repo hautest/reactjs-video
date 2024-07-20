@@ -1,9 +1,9 @@
-import { Dispatch, SetStateAction } from 'react';
+import { RefObject } from 'react';
 import { createContext } from '../utils/createContext';
+import { ReactVideoState } from './types/ReactVideoState';
 
-export interface ReactVideoContext {
-  isPlaying: boolean;
-  setIsPlaying: Dispatch<SetStateAction<boolean>>;
+export interface ReactVideoContext extends ReactVideoState {
+  videoRef: RefObject<HTMLVideoElement>;
 }
 
 export const [ReactVideoProvider, useReactVideoContext] = createContext<ReactVideoContext>('ReactVideo');
