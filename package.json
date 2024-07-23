@@ -15,14 +15,14 @@
   "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
-    ".": {
+    "./ReactVideo": {
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/ReactVideo/index.d.ts",
+        "default": "./dist/ReactVideo/index.js"
       },
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/ReactVideo/index.d.mts",
+        "default": "./dist/ReactVideo/index.mjs"
       }
     }
   },

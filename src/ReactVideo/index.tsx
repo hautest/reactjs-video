@@ -1,10 +1,7 @@
-import { Pause } from './Pause';
-import { Play } from './Play';
-import { Root } from './Root';
-import { Video } from './Video';
+import { Pause, PauseProps } from './Pause';
+import { Play, PlayProps } from './Play';
+import { Root, RootProps } from './Root';
+import { Video, VideoProps } from './Video';
 
-export const ReactVideo = Object.assign(Root, {
-  Video,
-  Play,
-  Pause,
-});
+export { Root, Video, Play, Pause };
+export type { RootProps, VideoProps, PlayProps, PauseProps };
