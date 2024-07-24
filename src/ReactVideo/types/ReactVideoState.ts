@@ -1,13 +1,22 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export interface ReactVideoState {
-  isPlaying: boolean;
-  setIsPlaying: Dispatch<SetStateAction<boolean>>;
+  //play
+  play: boolean;
+  defaultPlay: boolean;
+  setPlay: Dispatch<SetStateAction<boolean | undefined>>;
+  //volume
   volume: number;
-  setVolume: Dispatch<SetStateAction<number>>;
+  defaultVolume: number;
+  setVolume: Dispatch<SetStateAction<number | undefined>>;
+  //progress
   progress: number;
-  setProgress: Dispatch<SetStateAction<number>>;
+  defaultProgress: number;
+  setProgress: Dispatch<SetStateAction<number | undefined>>;
+  //speed
   speed: number;
-  setSpeed: Dispatch<SetStateAction<number>>;
+  defaultSpeed: number;
+  setSpeed: Dispatch<SetStateAction<number | undefined>>;
+  //
   src: string;
 }

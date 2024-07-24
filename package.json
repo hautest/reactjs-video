@@ -2,6 +2,9 @@
   "name": "reactjs-video",
   "version": "0.1.0",
   "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -10,9 +13,6 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     "./ReactVideo": {
@@ -56,13 +56,15 @@
     "vitest": "^1.5.0"
   },
   "peerDependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-use-controllable-state": "^1.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@radix-ui/react-slot": "^1.1.0"
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-use-controllable-state": "^1.1.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@radix-ui/react-slot": "^1.1.0"
+    "react-dom": "^18.3.1"
   }
 }

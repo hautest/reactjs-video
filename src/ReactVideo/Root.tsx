@@ -1,33 +1,70 @@
-import { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef } from 'react';
 import { ReactVideoProvider } from './reactVideoContext';
 import { ReactVideoEvent } from './types/ReactVideoEvent';
 import { ReactVideoState } from './types/ReactVideoState';
 import { WithChildren } from './types/WithChildren';
+import { useControllableState } from '@radix-ui/react-use-controllable-state';
 
 export type RootProps = Partial<ReactVideoEvent> &
-  Partial<Pick<ReactVideoState, 'progress' | 'speed' | 'volume' | 'src'>> &
+  Partial<Omit<ReactVideoState, 'setPlay' | 'setVolume' | 'setProgress' | 'setSpeed'>> &
   WithChildren;
 
 export const Root = ({
-  volume: _volume = 1.0,
-  progress: _progress = 0,
-  speed: _speed = 1,
+  volume: _volume,
+  progress: _progress,
+  speed: _speed,
   src = '',
+  play: _play,
   children,
+  onPlayChange,
+  onVolumeChange,
+  onProgressChange,
+  onSpeedChange,
+  defaultPlay,
+  defaultVolume,
+  defaultProgress,
+  defaultSpeed,
 }: RootProps) => {
-  // Most browsers restrict autoplaying videos without user interaction, setting it to false by default.
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(_volume);
-  const [progress, setProgress] = useState(_progress);
-  const [speed, setSpeed] = useState(_speed);
+  const [play, setPlay] = useControllableState({
+    prop: _play,
+    onChange: onPlayChange,
+    defaultProp: defaultPlay,
+  });
+  const [volume, setVolume] = useControllableState({
+    prop: _volume,
+    defaultProp: defaultVolume,
+    onChange: onVolumeChange,
+  });
+  const [progress, setProgress] = useControllableState({
+    prop: _progress,
+    defaultProp: defaultProgress,
+    onChange: onProgressChange,
+  });
+  const [speed, setSpeed] = useControllableState({
+    prop: _speed,
+    defaultProp: defaultSpeed,
+    onChange: onSpeedChange,
+  });
 
   const videoRef = useRef<HTMLVideoElement>(null);
 
   return (
     <ReactVideoProvider
       value={useMemo(
-        () => ({ isPlaying, setIsPlaying, videoRef, volume, setVolume, progress, setProgress, speed, setSpeed, src }),
-        [isPlaying, progress, speed, src, volume]
+        () => ({
+          play,
+          setPlay,
+          videoRef,
+          volume,
+          setVolume,
+          progress,
+          setProgress,
+          speed,
+          setSpeed,
+          src,
+          autoPlay: _play || defaultPlay,
+        }),
+        [_play, defaultPlay, play, progress, setPlay, setProgress, setSpeed, setVolume, speed, src, volume]
       )}
     >
       {children}
