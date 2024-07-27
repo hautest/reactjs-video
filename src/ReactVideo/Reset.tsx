@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
 
 export type ResetProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Reset = ({ asChild, onClick, ...rest }: ResetProps) => {
+export const Reset = forwardRef<HTMLButtonElement, ResetProps>(({ asChild, onClick, ...rest }, ref) => {
   const Comp = asChild ? Slot : 'button';
   const { videoRef } = useReactVideoContext('Reset');
 
@@ -16,5 +16,6 @@ export const Reset = ({ asChild, onClick, ...rest }: ResetProps) => {
     onClick?.(e);
   };
 
-  return <Comp {...rest} onClick={handleClick} />;
-};
+  return <Comp {...rest} ref={ref} onClick={handleClick} />;
+});
+Reset.displayName = 'Reset';

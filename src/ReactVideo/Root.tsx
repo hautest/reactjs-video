@@ -1,4 +1,4 @@
-import { useMemo, useRef } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { ReactVideoProvider } from './reactVideoContext';
 import { ReactVideoEvent } from './types/ReactVideoEvent';
 import { ReactVideoState } from './types/ReactVideoState';
@@ -47,6 +47,8 @@ export const Root = ({
   });
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const fullScreenContentRef = useRef<HTMLDivElement>(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
 
   return (
     <ReactVideoProvider
@@ -63,8 +65,24 @@ export const Root = ({
           setSpeed,
           src,
           autoPlay: _play || defaultPlay,
+          fullScreenContentRef,
+          isFullScreen,
+          setIsFullScreen,
         }),
-        [_play, defaultPlay, play, progress, setPlay, setProgress, setSpeed, setVolume, speed, src, volume]
+        [
+          _play,
+          defaultPlay,
+          isFullScreen,
+          play,
+          progress,
+          setPlay,
+          setProgress,
+          setSpeed,
+          setVolume,
+          speed,
+          src,
+          volume,
+        ]
       )}
     >
       {children}

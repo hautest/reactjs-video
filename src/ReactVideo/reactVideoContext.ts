@@ -4,6 +4,7 @@ import { ReactVideoState } from './types/ReactVideoState';
 
 export interface ReactVideoContext extends ReactVideoState {
   videoRef: RefObject<HTMLVideoElement>;
+  fullScreenContentRef: RefObject<HTMLDivElement>;
   autoPlay?: boolean;
 }
 

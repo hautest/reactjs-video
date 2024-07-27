@@ -17,6 +17,9 @@ export interface ReactVideoState {
   speed: number;
   defaultSpeed: number;
   setSpeed: Dispatch<SetStateAction<number | undefined>>;
+  //fullScreen
+  isFullScreen: boolean;
+  setIsFullScreen: Dispatch<SetStateAction<boolean>>;
   //
   src: string;
 }
