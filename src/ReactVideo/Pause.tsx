@@ -7,13 +7,13 @@ export type PauseProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Pause = forwardRef<HTMLButtonElement, PauseProps>(({ asChild, onClick, ...rest }, ref) => {
   const Comp = asChild ? Slot : 'button';
-  const { setPlay } = useReactVideoContext('Pause');
+  const { setPlay, play } = useReactVideoContext('Pause');
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     setPlay?.(false);
     onClick?.(e);
   };
 
-  return <Comp onClick={handleClick} ref={ref} {...rest} />;
+  return play && <Comp onClick={handleClick} ref={ref} {...rest} />;
 });
 Pause.displayName = 'Pause';

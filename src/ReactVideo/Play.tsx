@@ -7,13 +7,13 @@ export type PlayProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Play = forwardRef<HTMLButtonElement, PlayProps>(({ asChild, onClick, ...rest }, ref) => {
   const Comp = asChild ? Slot : 'button';
-  const { setPlay } = useReactVideoContext('Play');
+  const { setPlay, play } = useReactVideoContext('Play');
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     setPlay?.(true);
     onClick?.(e);
   };
 
-  return <Comp onClick={handleClick} ref={ref} {...rest} />;
+  return !play && <Comp onClick={handleClick} ref={ref} {...rest} />;
 });
 Play.displayName = 'Play';
