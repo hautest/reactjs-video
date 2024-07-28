@@ -6,7 +6,7 @@ import { WithChildren } from './types/WithChildren';
 import { useControllableState } from '@radix-ui/react-use-controllable-state';
 
 export type RootProps = Partial<ReactVideoEvent> &
-  Partial<Omit<ReactVideoState, 'setPlay' | 'setVolume' | 'setProgress' | 'setSpeed'>> &
+  Partial<Omit<ReactVideoState, 'setPlay' | 'setVolume' | 'setProgress' | 'setSpeed' | 'setMuted'>> &
   WithChildren;
 
 export const Root = ({
@@ -15,15 +15,18 @@ export const Root = ({
   speed: _speed,
   src = '',
   play: _play,
+  muted: _muted,
   children,
   onPlayChange,
   onVolumeChange,
   onProgressChange,
   onSpeedChange,
+  onMutedChange,
   defaultPlay,
   defaultVolume,
   defaultProgress,
   defaultSpeed,
+  defaultMuted,
 }: RootProps) => {
   const [play, setPlay] = useControllableState({
     prop: _play,
@@ -44,6 +47,11 @@ export const Root = ({
     prop: _speed,
     defaultProp: defaultSpeed,
     onChange: onSpeedChange,
+  });
+  const [muted, setMuted] = useControllableState({
+    defaultProp: defaultMuted,
+    prop: _muted,
+    onChange: onMutedChange,
   });
 
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -68,6 +76,8 @@ export const Root = ({
           fullScreenContentRef,
           isFullScreen,
           setIsFullScreen,
+          muted,
+          setMuted,
         }),
         [
           _play,
@@ -79,9 +89,11 @@ export const Root = ({
           setProgress,
           setSpeed,
           setVolume,
+          setMuted,
           speed,
           src,
           volume,
+          muted,
         ]
       )}
     >

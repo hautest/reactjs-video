@@ -7,4 +7,5 @@ export interface ReactVideoEvent {
   onPlayChange: (isPlaying: boolean) => void;
   onVolumeChange: (volume: number) => void;
   onProgressChange: (progress: number) => void;
+  onMutedChange: (muted: boolean) => void;
 }

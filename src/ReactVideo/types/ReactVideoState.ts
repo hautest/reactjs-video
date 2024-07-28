@@ -20,6 +20,10 @@ export interface ReactVideoState {
   //fullScreen
   isFullScreen: boolean;
   setIsFullScreen: Dispatch<SetStateAction<boolean>>;
+  //muted
+  muted: boolean;
+  defaultMuted: boolean;
+  setMuted: Dispatch<SetStateAction<boolean | undefined>>;
   //
   src: string;
 }
