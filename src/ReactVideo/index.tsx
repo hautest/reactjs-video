@@ -9,6 +9,8 @@ import { FullScreenClose, FullScreenCloseProps } from './FullScreenClose';
 import { Volume, VolumeProps, VolumeChildProps } from './Volume';
 import { MutedTrigger, MutedTriggerProps } from './MutedTrigger';
 import { MutedClose, MutedCloseProps } from './MuteClose';
+import { PIPTrigger, PIPTriggerProps } from './PIPTrigger';
+import { PIPClose, PIPCloseProps } from './PIPClose';
 
 export {
   Root,
@@ -22,6 +24,8 @@ export {
   Volume,
   MutedTrigger,
   MutedClose,
+  PIPTrigger,
+  PIPClose,
 };
 export type {
   RootProps,
@@ -36,4 +40,6 @@ export type {
   VolumeChildProps,
   MutedTriggerProps,
   MutedCloseProps,
+  PIPTriggerProps,
+  PIPCloseProps,
 };

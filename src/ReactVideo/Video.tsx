@@ -6,7 +6,7 @@ import { isProd } from '../utils/isProd';
 export type VideoProps = Omit<VideoHTMLAttributes<HTMLVideoElement>, 'controls' | 'muted'>;
 
 export const Video = forwardRef<HTMLVideoElement, VideoProps>(({ src: _src, ...rest }, ref) => {
-  const { videoRef, src, autoPlay, play, volume, muted } = useReactVideoContext('Video');
+  const { videoRef, src, autoPlay, play, volume, muted, setIsPIP, setPlay } = useReactVideoContext('Video');
   const composedRef = composeRefs(videoRef, ref);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const Video = forwardRef<HTMLVideoElement, VideoProps>(({ src: _src, ...r
     } else {
       videoRef?.current?.pause();
     }
-  }, [muted, play, autoPlay, videoRef]);
+  }, [play, videoRef]);
 
   // Synchronizing the volume state with the video state
   useEffect(() => {
@@ -34,6 +34,23 @@ export const Video = forwardRef<HTMLVideoElement, VideoProps>(({ src: _src, ...r
       videoRef.current.volume = volume;
     }
   }, [videoRef, volume]);
+
+  useEffect(() => {
+    const handleEnterPIP = () => setIsPIP?.(true);
+    const hanldeLeavePIP = () => {
+      setIsPIP?.(false);
+      setPlay?.(false);
+    };
+
+    videoRef?.current?.addEventListener('enterpictureinpicture', handleEnterPIP);
+    videoRef?.current?.addEventListener('leavepictureinpicture', hanldeLeavePIP);
+
+    return () => {
+      videoRef?.current?.removeEventListener('enterpictureinpicture', handleEnterPIP);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      videoRef?.current?.removeEventListener('leavepictureinpicture', hanldeLeavePIP);
+    };
+  }, [setIsPIP, setPlay, videoRef]);
 
   return <video {...rest} src={_src || src} controls={false} muted={muted} ref={composedRef} />;
 });

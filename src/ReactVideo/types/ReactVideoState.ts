@@ -24,6 +24,9 @@ export interface ReactVideoState {
   muted: boolean;
   defaultMuted: boolean;
   setMuted: Dispatch<SetStateAction<boolean | undefined>>;
+  //PIP
+  isPIP: boolean;
+  setIsPIP: Dispatch<SetStateAction<boolean>>;
   //
   src: string;
 }

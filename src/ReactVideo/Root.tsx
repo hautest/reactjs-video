@@ -55,8 +55,11 @@ export const Root = ({
   });
 
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const fullScreenContentRef = useRef<HTMLDivElement>(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const [isPIP, setIsPIP] = useState(false);
 
   return (
     <ReactVideoProvider
@@ -78,6 +81,8 @@ export const Root = ({
           setIsFullScreen,
           muted,
           setMuted,
+          isPIP,
+          setIsPIP,
         }),
         [
           _play,
@@ -94,6 +99,8 @@ export const Root = ({
           src,
           volume,
           muted,
+          isPIP,
+          setIsPIP,
         ]
       )}
     >
