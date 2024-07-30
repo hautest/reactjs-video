@@ -1,6 +1,6 @@
 import { forwardRef, VideoHTMLAttributes } from 'react';
-import { useReactVideoContext } from './reactVideoContext';
-import { composeRefs } from '../utils/composeRefs';
+import { useReactVideoContext } from '../reactVideoContext';
+import { composeRefs } from '../../utils/composeRefs';
 
 export type VideoProps = Omit<VideoHTMLAttributes<HTMLVideoElement>, 'controls' | 'muted'>;
 

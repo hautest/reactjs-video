@@ -89,9 +89,10 @@ export const Root = ({
 
   // Synchronizing the play state with the video state
   useEffect(() => {
-    if (play && videoRef?.current) {
+    if (play && videoRef?.current && videoRef?.current.paused) {
       videoRef?.current?.play();
-    } else {
+    }
+    if (!play && videoRef?.current && !videoRef?.current.paused) {
       videoRef?.current?.pause();
     }
   }, [play, videoRef]);
