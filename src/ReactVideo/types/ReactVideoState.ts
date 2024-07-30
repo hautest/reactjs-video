@@ -9,10 +9,6 @@ export interface ReactVideoState {
   volume: number;
   defaultVolume: number;
   setVolume: Dispatch<SetStateAction<number | undefined>>;
-  //progress
-  progress: number;
-  defaultProgress: number;
-  setProgress: Dispatch<SetStateAction<number | undefined>>;
   //speed
   playbackRate: number;
   defaultPlaybackRate: number;
@@ -27,6 +23,10 @@ export interface ReactVideoState {
   //PIP
   isPIP: boolean;
   setIsPIP: Dispatch<SetStateAction<boolean>>;
+  //currentTime
+  currentTime: number;
+  defaultCurrentTime: number;
+  setCurrentTime: Dispatch<SetStateAction<number | undefined>>;
   //
   src: string;
 }

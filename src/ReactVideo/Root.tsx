@@ -19,13 +19,15 @@ export type RootProps = Partial<ReactVideoEvent> &
       | 'setIsPIP'
       | 'isFullScreen'
       | 'setIsFullScreen'
+      | 'setCurrentTime'
+      | 'setPlaybackRate'
     >
   > &
   WithChildren;
 
 export const Root = ({
   volume: _volume,
-  progress: _progress,
+  currentTime: _currentTime,
   playbackRate: _playbackRate,
   src = '',
   play: _play,
@@ -33,7 +35,7 @@ export const Root = ({
   children,
   onPlayChange,
   onVolumeChange,
-  onProgressChange,
+  onCurrentTimeChange,
   onPlaybackRateChange,
   onMutedChange,
   onReset,
@@ -41,7 +43,7 @@ export const Root = ({
   onFullScreenChange,
   defaultPlay,
   defaultVolume,
-  defaultProgress,
+  defaultCurrentTime,
   defaultPlaybackRate,
   defaultMuted,
 }: RootProps) => {
@@ -55,10 +57,10 @@ export const Root = ({
     defaultProp: defaultVolume,
     onChange: onVolumeChange,
   });
-  const [progress, setProgress] = useControllableState({
-    prop: _progress,
-    defaultProp: defaultProgress,
-    onChange: onProgressChange,
+  const [currentTime, setCurrentTime] = useControllableState({
+    prop: _currentTime,
+    defaultProp: defaultCurrentTime,
+    onChange: onCurrentTimeChange,
   });
   const [playbackRate, setPlaybackRate] = useControllableState({
     prop: _playbackRate,
@@ -144,6 +146,12 @@ export const Root = ({
     };
   }, [onFullScreenChange, setIsFullScreen]);
 
+  useEffect(() => {
+    if (currentTime !== undefined && videoRef.current) {
+      videoRef.current.currentTime = currentTime;
+    }
+  }, [currentTime]);
+
   return (
     <ReactVideoProvider
       value={useMemo(
@@ -153,8 +161,8 @@ export const Root = ({
           videoRef,
           volume,
           setVolume,
-          progress,
-          setProgress,
+          currentTime,
+          setCurrentTime,
           playbackRate,
           setPlaybackRate,
           src,
@@ -168,20 +176,20 @@ export const Root = ({
           onReset,
         }),
         [
+          currentTime,
           isFullScreen,
           isPIP,
           muted,
+          onReset,
           play,
           playbackRate,
-          progress,
+          setCurrentTime,
           setMuted,
           setPlay,
           setPlaybackRate,
-          setProgress,
           setVolume,
           src,
           volume,
-          onReset,
         ]
       )}
     >

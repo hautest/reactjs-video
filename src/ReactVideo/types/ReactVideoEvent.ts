@@ -6,7 +6,7 @@ export interface ReactVideoEvent {
   onTrackChange: () => void;
   onPlayChange: (isPlaying: boolean) => void;
   onVolumeChange: (volume: number) => void;
-  onProgressChange: (progress: number) => void;
+  onCurrentTimeChange: (currentTime: number) => void;
   onMutedChange: (muted: boolean) => void;
   onPIPChange: (isPIP: boolean) => void;
 }

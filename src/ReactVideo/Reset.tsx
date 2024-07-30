@@ -7,11 +7,11 @@ export type ResetProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Reset = forwardRef<HTMLButtonElement, ResetProps>(({ asChild, onClick, ...rest }, ref) => {
   const Comp = asChild ? Slot : 'button';
-  const { videoRef, onReset } = useReactVideoContext('Reset');
+  const { videoRef, onReset, setCurrentTime } = useReactVideoContext('Reset');
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (videoRef?.current) {
-      videoRef.current.currentTime = 0;
+      setCurrentTime?.(0);
       onReset?.();
     }
     onClick?.(e);
