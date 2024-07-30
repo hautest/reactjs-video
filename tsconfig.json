@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "target": "es2016",
     "module": "commonjs",
     "esModuleInterop": true,
