@@ -11,6 +11,7 @@ import { MutedTrigger, MutedTriggerProps } from './MutedTrigger';
 import { MutedClose, MutedCloseProps } from './MuteClose';
 import { PIPTrigger, PIPTriggerProps } from './PIPTrigger';
 import { PIPClose, PIPCloseProps } from './PIPClose';
+import { PlaybackRate, PlaybackRateChildProps, PlaybackRateProps } from './PlaybackRate';
 
 export {
   Root,
@@ -26,6 +27,7 @@ export {
   MutedClose,
   PIPTrigger,
   PIPClose,
+  PlaybackRate,
 };
 export type {
   RootProps,
@@ -42,4 +44,6 @@ export type {
   MutedCloseProps,
   PIPTriggerProps,
   PIPCloseProps,
+  PlaybackRateChildProps,
+  PlaybackRateProps,
 };

@@ -14,9 +14,9 @@ export interface ReactVideoState {
   defaultProgress: number;
   setProgress: Dispatch<SetStateAction<number | undefined>>;
   //speed
-  speed: number;
-  defaultSpeed: number;
-  setSpeed: Dispatch<SetStateAction<number | undefined>>;
+  playbackRate: number;
+  defaultPlaybackRate: number;
+  setPlaybackRate: Dispatch<SetStateAction<number | undefined>>;
   //fullScreen
   isFullScreen: boolean;
   setIsFullScreen: Dispatch<SetStateAction<boolean>>;

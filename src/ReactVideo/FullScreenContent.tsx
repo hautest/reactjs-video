@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, useEffect } from 'react';
+import { forwardRef, HTMLAttributes } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
@@ -9,17 +9,7 @@ export type FullScreenContentProps = WithAsChild & HTMLAttributes<HTMLDivElement
 export const FullScreenContent = forwardRef<HTMLDivElement, FullScreenContentProps>(
   ({ asChild, children, ...rest }, ref) => {
     const Comp = asChild ? Slot : 'div';
-    const { fullScreenContentRef, setIsFullScreen } = useReactVideoContext('FullScreenContent');
-
-    useEffect(() => {
-      const handleFullscreenChange = () => {
-        setIsFullScreen?.(document.fullscreenElement !== null);
-      };
-      document.addEventListener('fullscreenchange', handleFullscreenChange);
-      return () => {
-        document.removeEventListener('fullscreenchange', handleFullscreenChange);
-      };
-    }, [setIsFullScreen]);
+    const { fullScreenContentRef } = useReactVideoContext('FullScreenContent');
 
     return (
       <Comp ref={composeRefs(fullScreenContentRef, ref)} {...rest}>
