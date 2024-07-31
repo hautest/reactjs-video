@@ -1,6 +1,6 @@
 {
   "name": "reactjs-video",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "scripts": {
     "build": "tsup",
@@ -8,7 +8,7 @@
     "lint": "eslint **/*.{ts,tsx}",
     "test": "vitest run --typecheck",
     "test:watch": "vitest watch --typecheck",
-    "publish": "rm -rf ./dist && tsup && pnpm publish --access=public"
+    "publish:npm": "rm -rf ./dist && tsup && pnpm publish --access=public"
   },
   "files": [
     "dist"
