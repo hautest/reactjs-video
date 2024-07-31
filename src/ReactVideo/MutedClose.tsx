@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
 
 export type MutedCloseProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const MutedClose = forwardRef<HTMLButtonElement, MutedCloseProps>(({ asChild, onClick, ...rest }, ref) => {
+export const MutedClose = ({ asChild, onClick, ...rest }: MutedCloseProps) => {
   const Comp = asChild ? Slot : 'button';
   const { videoRef, muted, setMuted } = useReactVideoContext('MutedClose');
 
@@ -17,6 +17,5 @@ export const MutedClose = forwardRef<HTMLButtonElement, MutedCloseProps>(({ asCh
     onClick?.(e);
   };
 
-  return muted && <Comp {...rest} onClick={handleClick} ref={ref} />;
-});
-MutedClose.displayName = 'MutedClose';
+  return muted && <Comp {...rest} onClick={handleClick} />;
+};

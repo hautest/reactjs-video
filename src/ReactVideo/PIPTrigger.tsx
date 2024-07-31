@@ -1,11 +1,12 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
 
 export type PIPTriggerProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const PIPTrigger = forwardRef<HTMLButtonElement, PIPTriggerProps>(({ asChild, onClick, ...rest }, ref) => {
+// eslint-disable-next-line react/display-name
+export const PIPTrigger = ({ asChild, onClick, ...rest }: PIPTriggerProps) => {
   const Comp = asChild ? Slot : 'button';
   const { isPIP, videoRef } = useReactVideoContext('PIPTrigger');
 
@@ -14,6 +15,5 @@ export const PIPTrigger = forwardRef<HTMLButtonElement, PIPTriggerProps>(({ asCh
     onClick?.(e);
   };
 
-  return !isPIP && <Comp {...rest} onClick={handleClick} ref={ref} />;
-});
-PIPTrigger.displayName = 'PIPTrigger';
+  return !isPIP && <Comp {...rest} onClick={handleClick} />;
+};

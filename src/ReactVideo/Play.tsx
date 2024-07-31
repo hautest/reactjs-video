@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { useReactVideoContext } from './reactVideoContext';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 
 export type PlayProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Play = forwardRef<HTMLButtonElement, PlayProps>(({ asChild, onClick, ...rest }, ref) => {
+export const Play = ({ asChild, onClick, ...rest }: PlayProps) => {
   const Comp = asChild ? Slot : 'button';
   const { setPlay, play } = useReactVideoContext('Play');
 
@@ -14,6 +14,5 @@ export const Play = forwardRef<HTMLButtonElement, PlayProps>(({ asChild, onClick
     onClick?.(e);
   };
 
-  return !play && <Comp onClick={handleClick} ref={ref} {...rest} />;
-});
-Play.displayName = 'Play';
+  return !play && <Comp onClick={handleClick} {...rest} />;
+};

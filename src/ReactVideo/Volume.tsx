@@ -15,4 +15,3 @@ export const Volume = ({ children }: VolumeProps) => {
 
   return children({ volume, setVolume });
 };
-Volume.displayName = 'Volume';

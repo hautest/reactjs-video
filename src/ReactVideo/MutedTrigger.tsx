@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
 
 export type MutedTriggerProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const MutedTrigger = forwardRef<HTMLButtonElement, MutedTriggerProps>(({ asChild, onClick, ...rest }, ref) => {
+export const MutedTrigger = ({ asChild, onClick, ...rest }: MutedTriggerProps) => {
   const Comp = asChild ? Slot : 'button';
   const { videoRef, muted, setMuted } = useReactVideoContext('MutedTrigger');
 
@@ -17,6 +17,5 @@ export const MutedTrigger = forwardRef<HTMLButtonElement, MutedTriggerProps>(({ 
     onClick?.(e);
   };
 
-  return !muted && <Comp {...rest} onClick={handleClick} ref={ref} />;
-});
-MutedTrigger.displayName = 'MutedTrigger';
+  return !muted && <Comp {...rest} onClick={handleClick} />;
+};

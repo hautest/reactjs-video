@@ -1,11 +1,11 @@
-import { ButtonHTMLAttributes, forwardRef, MouseEvent } from 'react';
+import { ButtonHTMLAttributes, MouseEvent } from 'react';
 import { WithAsChild } from './types/WithAsChild';
 import { Slot } from '@radix-ui/react-slot';
 import { useReactVideoContext } from './reactVideoContext';
 
 export type PIPCloseProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const PIPClose = forwardRef<HTMLButtonElement, PIPCloseProps>(({ asChild, onClick, ...rest }, ref) => {
+export const PIPClose = ({ asChild, onClick, ...rest }: PIPCloseProps) => {
   const Comp = asChild ? Slot : 'button';
   const { isPIP } = useReactVideoContext('PIPClose');
 
@@ -16,6 +16,5 @@ export const PIPClose = forwardRef<HTMLButtonElement, PIPCloseProps>(({ asChild,
     onClick?.(e);
   };
 
-  return isPIP && <Comp {...rest} onClick={handleClick} ref={ref} />;
-});
-PIPClose.displayName = 'PIPClose';
+  return isPIP && <Comp {...rest} onClick={handleClick} />;
+};
