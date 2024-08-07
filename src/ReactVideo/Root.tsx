@@ -29,7 +29,7 @@ export const Root = ({
   volume: _volume,
   currentTime: _currentTime,
   playbackRate: _playbackRate,
-  src = '',
+  src,
   play: _play,
   muted: _muted,
   children,
