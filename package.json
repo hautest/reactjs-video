@@ -13,16 +13,19 @@
   "files": [
     "dist"
   ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.mjs",
   "exports": {
     "./package.json": "./package.json",
-    "./ReactVideo": {
+    ".": {
       "require": {
-        "types": "./dist/ReactVideo/index.d.ts",
-        "default": "./dist/ReactVideo/index.js"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "import": {
-        "types": "./dist/ReactVideo/index.d.mts",
-        "default": "./dist/ReactVideo/index.mjs"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       }
     }
   },
