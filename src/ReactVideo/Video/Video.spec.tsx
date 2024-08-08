@@ -7,7 +7,7 @@ const DATA_TESTID = 'video';
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
 describe('Video', () => {
-  it('Video 렌더링', () => {
+  it('renders the Video', () => {
     render(
       <ReactVideo.Root>
         <ReactVideo.Video data-testid={DATA_TESTID} />
@@ -16,7 +16,7 @@ describe('Video', () => {
     expect(screen.getByTestId(DATA_TESTID)).toBeInTheDocument();
   });
 
-  it('Video에 src가 잘 전달되는지', () => {
+  it('passes src to the Video component correctly', () => {
     render(
       <ReactVideo.Root src={TEST_VIDEO_SRC}>
         <ReactVideo.Video data-testid={DATA_TESTID} />
@@ -25,7 +25,7 @@ describe('Video', () => {
     expect(screen.getByTestId(DATA_TESTID)).toHaveProperty('src', TEST_VIDEO_SRC);
   });
 
-  it('muted 기능이 잘 동작하는지', () => {
+  it('checks if the muted property works correctly', () => {
     render(
       <ReactVideo.Root defaultMuted>
         <ReactVideo.Video data-testid={DATA_TESTID} />
@@ -34,7 +34,7 @@ describe('Video', () => {
     expect(screen.getByTestId(DATA_TESTID)).toHaveProperty('muted', true);
   });
 
-  it('ref를 직접 사용 가능한지', () => {
+  it('allows using ref directly', () => {
     const VideoWithRef = () => {
       const videoRef = useRef<HTMLVideoElement>(null);
 
