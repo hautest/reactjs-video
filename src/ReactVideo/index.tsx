@@ -1,5 +1,5 @@
 import { Pause, PauseProps } from './Pause';
-import { Play, PlayProps } from './Play';
+import { Play, PlayProps } from './Play/Play';
 import { Root, RootProps } from './Root';
 import { Video, VideoProps } from './Video/Video';
 import { Reset, ResetProps } from './Reset';
