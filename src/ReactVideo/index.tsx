@@ -1,4 +1,4 @@
-import { Pause, PauseProps } from './Pause';
+import { Pause, PauseProps } from './Pause/Pause';
 import { Play, PlayProps } from './Play/Play';
 import { Root, RootProps } from './Root';
 import { Video, VideoProps } from './Video/Video';

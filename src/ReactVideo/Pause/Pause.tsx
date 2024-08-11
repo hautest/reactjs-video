@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes, MouseEvent } from 'react';
-import { WithAsChild } from './types/WithAsChild';
-import { useReactVideoContext } from './reactVideoContext';
+import { WithAsChild } from '../types/WithAsChild';
+import { useReactVideoContext } from '../reactVideoContext';
 import { Slot } from '@radix-ui/react-slot';
 
 export type PauseProps = WithAsChild & ButtonHTMLAttributes<HTMLButtonElement>;
