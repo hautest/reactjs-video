@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import * as ReactVideo from '../';
 
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -32,7 +32,7 @@ describe('Pause', () => {
 
     fireEvent.click(pauseButton);
 
-    waitFor(() => expect(video.paused).toBe(true));
+    expect(video.paused).toBe(true);
   });
 
   it('After clicking, the video should pause and the Pause should disappear.', () => {

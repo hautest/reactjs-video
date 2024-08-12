@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import * as ReactVideo from '../';
 
@@ -19,7 +19,7 @@ describe('Play', () => {
     expect(screen.getByRole('button')).toHaveTextContent(PLAY_BUTTON_TEXT);
   });
 
-  it('Play video on click', () => {
+  it('Play video on click', async () => {
     render(
       <ReactVideo.Root src={TEST_VIDEO_SRC}>
         <ReactVideo.Video data-testid={VIDEO_TEST_ID} />
@@ -32,7 +32,7 @@ describe('Play', () => {
 
     fireEvent.click(playButton);
 
-    waitFor(() => expect(video.paused).toBe(false));
+    expect(video.paused).toBe(false);
   });
 
   it('After clicking, the video should play and the Play should disappear.', () => {
