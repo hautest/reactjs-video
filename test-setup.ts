@@ -21,3 +21,19 @@ HTMLMediaElement.prototype.play = async function () {
     get: () => false,
   });
 };
+
+document.exitFullscreen = async function () {
+  Object.defineProperty(document, 'fullscreenElement', {
+    configurable: true,
+    enumerable: true,
+    get: () => null,
+  });
+};
+
+HTMLDivElement.prototype.requestFullscreen = async function () {
+  Object.defineProperty(document, 'fullscreenElement', {
+    configurable: true,
+    enumerable: true,
+    get: () => this,
+  });
+};
