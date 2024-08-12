@@ -2,7 +2,7 @@ import { Pause, PauseProps } from './Pause/Pause';
 import { Play, PlayProps } from './Play/Play';
 import { Root, RootProps } from './Root';
 import { Video, VideoProps } from './Video/Video';
-import { Reset, ResetProps } from './Reset';
+import { Reset, ResetProps } from './Reset/Reset';
 import { FullScreenContent, FullScreenContentProps } from './FullScreenContent';
 import { FullScreenTrigger, FullScreenTriggerProps } from './FullScreenTrigger';
 import { FullScreenClose, FullScreenCloseProps } from './FullScreenClose';
