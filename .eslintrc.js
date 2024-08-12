@@ -9,10 +9,10 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: { jsx: true },
-    tsconfigRootDir: __dirname,
   },
   plugins: ['@typescript-eslint', 'react-hooks', 'simple-import-sort'],
   extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
+  settings: { 'import/resolver': { typescript: {} }, react: { version: 'detect' } },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'no-console': ['error', { allow: ['error'] }],
