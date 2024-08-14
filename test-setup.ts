@@ -28,6 +28,9 @@ document.exitFullscreen = async function () {
     enumerable: true,
     get: () => null,
   });
+
+  const event = new Event('fullscreenchange');
+  document.dispatchEvent(event);
 };
 
 HTMLDivElement.prototype.requestFullscreen = async function () {
@@ -36,4 +39,7 @@ HTMLDivElement.prototype.requestFullscreen = async function () {
     enumerable: true,
     get: () => this,
   });
+
+  const event = new Event('fullscreenchange');
+  document.dispatchEvent(event);
 };

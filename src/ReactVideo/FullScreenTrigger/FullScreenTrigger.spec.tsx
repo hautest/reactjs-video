@@ -35,4 +35,21 @@ describe('FullScreenTrigger', () => {
 
     expect(document.fullscreenElement).toBe(fullScreenContent);
   });
+
+  it('After click, the FullScreenTrigger disappears.', () => {
+    render(
+      <ReactVideo.Root src={TEST_VIDEO_SRC}>
+        <ReactVideo.FullScreenContent data-testid={FULL_SCREEN_CONTENT_TEST_ID}>
+          <ReactVideo.Video />
+        </ReactVideo.FullScreenContent>
+        <ReactVideo.FullScreenTrigger>{FULL_SCREEN_TRIGGER_BUTTON_TEXT}</ReactVideo.FullScreenTrigger>
+      </ReactVideo.Root>
+    );
+
+    const fullScreenTriggerButton = screen.getByRole('button');
+
+    fireEvent.click(fullScreenTriggerButton);
+
+    expect(fullScreenTriggerButton).not.toBeInTheDocument();
+  });
 });
