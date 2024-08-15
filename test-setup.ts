@@ -43,3 +43,27 @@ HTMLDivElement.prototype.requestFullscreen = async function () {
   const event = new Event('fullscreenchange');
   document.dispatchEvent(event);
 };
+
+HTMLVideoElement.prototype.requestPictureInPicture = async function () {
+  Object.defineProperty(document, 'pictureInPictureElement', {
+    configurable: true,
+    enumerable: true,
+    get: () => this,
+  });
+
+  const event = new Event('enterpictureinpicture');
+  this.dispatchEvent(event);
+
+  return this;
+};
+
+document.exitPictureInPicture = async function () {
+  Object.defineProperty(document, 'pictureInPictureElement', {
+    configurable: true,
+    enumerable: true,
+    get: () => null,
+  });
+
+  const event = new Event('leavepictureinpicture');
+  HTMLVideoElement.prototype.dispatchEvent(event);
+};
