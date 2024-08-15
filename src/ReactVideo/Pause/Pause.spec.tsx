@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as ReactVideo from '../';
 
@@ -48,5 +48,22 @@ describe('Pause', () => {
     fireEvent.click(pauseButton);
 
     expect(pauseButton).not.toBeInTheDocument();
+  });
+
+  it('When the Pause is clicked, onPlayChange should be called with false.', () => {
+    const handlePlayChange = vi.fn();
+
+    render(
+      <ReactVideo.Root defaultPlay defaultMuted onPlayChange={handlePlayChange}>
+        <ReactVideo.Video />
+        <ReactVideo.Pause />
+      </ReactVideo.Root>
+    );
+
+    const pauseButton = screen.getByRole('button');
+
+    fireEvent.click(pauseButton);
+
+    expect(handlePlayChange).toBeCalledWith(false);
   });
 });

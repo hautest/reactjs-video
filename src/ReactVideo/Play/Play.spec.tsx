@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as ReactVideo from '../';
 
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -48,5 +48,22 @@ describe('Play', () => {
     fireEvent.click(playButton);
 
     expect(playButton).not.toBeInTheDocument();
+  });
+
+  it('When the Play is clicked, onPlayChange should be called with true.', () => {
+    const handlePlayChange = vi.fn();
+
+    render(
+      <ReactVideo.Root onPlayChange={handlePlayChange}>
+        <ReactVideo.Video />
+        <ReactVideo.Play />
+      </ReactVideo.Root>
+    );
+
+    const playButton = screen.getByRole('button');
+
+    fireEvent.click(playButton);
+
+    expect(handlePlayChange).toBeCalledWith(true);
   });
 });

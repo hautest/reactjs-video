@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import * as ReactVideo from '../';
 
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
@@ -65,5 +65,28 @@ describe('Reset', () => {
     fireEvent.click(resetButton);
 
     expect(video.paused).toBe(true);
+  });
+
+  it('When the Reset clicked, onReset should be called', () => {
+    const handleReset = vi.fn();
+
+    render(
+      <ReactVideo.Root
+        onReset={handleReset}
+        muted
+        defaultPlay
+        defaultCurrentTime={DEFAULT_CURRENT_TIME}
+        src={TEST_VIDEO_SRC}
+      >
+        <ReactVideo.Video />
+        <ReactVideo.Reset />
+      </ReactVideo.Root>
+    );
+
+    const resetButton = screen.getByRole('button');
+
+    fireEvent.click(resetButton);
+
+    expect(handleReset).toBeCalled();
   });
 });

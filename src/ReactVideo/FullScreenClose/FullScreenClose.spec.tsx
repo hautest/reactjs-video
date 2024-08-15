@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import * as ReactVideo from '../';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
@@ -55,5 +55,28 @@ describe('FullScreenClose', () => {
     fireEvent.click(fullScreenCloseButton);
 
     expect(fullScreenCloseButton).not.toBeInTheDocument();
+  });
+
+  it('When the FullScreenClose is clicked, onFullScreenChange should be called with false.', () => {
+    const handleFullscreenChange = vi.fn();
+
+    render(
+      <ReactVideo.Root onFullScreenChange={handleFullscreenChange} src={TEST_VIDEO_SRC}>
+        <ReactVideo.FullScreenContent>
+          <ReactVideo.Video />
+          <ReactVideo.FullScreenClose />
+        </ReactVideo.FullScreenContent>
+        <ReactVideo.FullScreenTrigger />
+      </ReactVideo.Root>
+    );
+
+    const fullScreenTriggerButton = screen.getByRole('button');
+
+    fireEvent.click(fullScreenTriggerButton);
+
+    const fullScreenCloseButton = screen.getByRole('button');
+    fireEvent.click(fullScreenCloseButton);
+
+    expect(handleFullscreenChange).toBeCalledWith(false);
   });
 });
