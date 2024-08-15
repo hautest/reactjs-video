@@ -197,4 +197,3 @@ export const Root = ({
     </ReactVideoProvider>
   );
 };
-Root.displayName = 'Root';
