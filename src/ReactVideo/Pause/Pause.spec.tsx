@@ -3,20 +3,18 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import * as ReactVideo from '../';
 
 const TEST_VIDEO_SRC = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-const PAUSE_BUTTON_TEXT = 'pauseButton';
 const VIDEO_TEST_ID = 'video';
 
 describe('Pause', () => {
-  it('renders the Pause', () => {
+  it('Does not render the Pause', () => {
     render(
-      <ReactVideo.Root defaultPlay src={TEST_VIDEO_SRC}>
+      <ReactVideo.Root src={TEST_VIDEO_SRC}>
         <ReactVideo.Video />
-        <ReactVideo.Pause>{PAUSE_BUTTON_TEXT}</ReactVideo.Pause>
+        <ReactVideo.Pause />
       </ReactVideo.Root>
     );
 
-    expect(screen.getByRole('button')).toBeInTheDocument();
-    expect(screen.getByRole('button')).toHaveTextContent(PAUSE_BUTTON_TEXT);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('Puase video on click', () => {
