@@ -10,7 +10,7 @@ import { Volume, VolumeProps, VolumeChildProps } from './Volume';
 import { MutedTrigger, MutedTriggerProps } from './MutedTrigger/MutedTrigger';
 import { MutedClose, MutedCloseProps } from './MutedClose/MutedClose';
 import { PIPTrigger, PIPTriggerProps } from './PIPTrigger/PIPTrigger';
-import { PIPClose, PIPCloseProps } from './PIPClose';
+import { PIPClose, PIPCloseProps } from './PIPClose/PIPClose';
 import { PlaybackRate, PlaybackRateChildProps, PlaybackRateProps } from './PlaybackRate';
 import { CurrentTime, CurrentTimeChildProps, CurrentTimeProps } from './CurrentTime';
 

@@ -65,5 +65,10 @@ document.exitPictureInPicture = async function () {
   });
 
   const event = new Event('leavepictureinpicture');
-  HTMLVideoElement.prototype.dispatchEvent(event);
+
+  const videoElement = document.querySelector('video');
+
+  if (videoElement) {
+    videoElement.dispatchEvent(event);
+  }
 };
