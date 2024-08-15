@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction, useEffect, useState } from 'react';
-import { useReactVideoContext } from './reactVideoContext';
+import { useReactVideoContext } from '../reactVideoContext';
 
 export interface CurrentTimeChildProps {
   setCurrentTime?: Dispatch<SetStateAction<number | undefined>>;

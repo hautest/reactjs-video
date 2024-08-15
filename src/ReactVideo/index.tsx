@@ -12,7 +12,7 @@ import { MutedClose, MutedCloseProps } from './MutedClose/MutedClose';
 import { PIPTrigger, PIPTriggerProps } from './PIPTrigger/PIPTrigger';
 import { PIPClose, PIPCloseProps } from './PIPClose/PIPClose';
 import { PlaybackRate, PlaybackRateChildProps, PlaybackRateProps } from './PlaybackRate';
-import { CurrentTime, CurrentTimeChildProps, CurrentTimeProps } from './CurrentTime';
+import { CurrentTime, CurrentTimeChildProps, CurrentTimeProps } from './CurrentTime/CurrentTime';
 
 export {
   Root,
