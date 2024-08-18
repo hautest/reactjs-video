@@ -37,4 +37,3 @@ export const CurrentTime = ({ children }: CurrentTimeProps) => {
 
   return children({ currentTime, setCurrentTime, buffered, duration: videoRef?.current?.duration });
 };
-CurrentTime.displayName = 'CurrentTime';
