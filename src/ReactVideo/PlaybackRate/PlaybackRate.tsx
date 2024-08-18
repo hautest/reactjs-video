@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { useReactVideoContext } from './reactVideoContext';
+import { useReactVideoContext } from '../reactVideoContext';
 
 export interface PlaybackRateChildProps {
   setPlaybackRate?: Dispatch<SetStateAction<number | undefined>>;
@@ -15,4 +15,3 @@ export const PlaybackRate = ({ children }: PlaybackRateProps) => {
 
   return children({ playbackRate, setPlaybackRate });
 };
-PlaybackRate.displayName = 'PlaybackRate';
