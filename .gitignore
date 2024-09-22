@@ -1,3 +1,9 @@
+# dependencies
 node_modules
 dist
+
+# test app
 test-app
+
+# docs
+docs/.vitepress/cache
