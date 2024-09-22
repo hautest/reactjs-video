@@ -6,7 +6,7 @@ import { Reset, ResetProps } from './Reset/Reset';
 import { FullScreenContent, FullScreenContentProps } from './FullScreenContent/FullScreenContent';
 import { FullScreenTrigger, FullScreenTriggerProps } from './FullScreenTrigger/FullScreenTrigger';
 import { FullScreenClose, FullScreenCloseProps } from './FullScreenClose/FullScreenClose';
-import { Volume, VolumeProps, VolumeChildProps } from './Volume';
+import { Volume, VolumeProps, VolumeChildProps } from './Volume/Volume';
 import { MutedTrigger, MutedTriggerProps } from './MutedTrigger/MutedTrigger';
 import { MutedClose, MutedCloseProps } from './MutedClose/MutedClose';
 import { PIPTrigger, PIPTriggerProps } from './PIPTrigger/PIPTrigger';

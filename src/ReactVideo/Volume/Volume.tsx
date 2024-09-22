@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react';
-import { useReactVideoContext } from './reactVideoContext';
+import { useReactVideoContext } from '../reactVideoContext';
 
 export interface VolumeChildProps {
   setVolume?: Dispatch<SetStateAction<number | undefined>>;
